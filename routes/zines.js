@@ -66,16 +66,16 @@ router.post('/articles/:id/update', function(req, res, next){
       }
     }
   } else {
-    zineCollection.findOne({_id: req.params.id}, function(err, thisZine){
-      res.render('zines/edit', {thisZine: {
-      title: req.body.title,
-      backgroundUrl: req.body.backgroundUrl,
-      darkBackground: req.body.darkBackground,
-      excerpt: req.body.excerpt,
-      body: req.body.body}, error: "Please correct the errors below"})
-    });
-  }
-});
+      zineCollection.update({_id: req.params.id}, {$set: {
+        title: req.body.title,
+        backgroundUrl: req.body.backgroundUrl,
+        darkBackground: req.body.darkBackground,
+        excerpt: req.body.excerpt,
+        body: req.body.body
+      }});
+    res.redirect('/zines/articles/' + req.params.id + '/edit')
+    };
+  });
 
 //POST remove
 router.get('/delete/:id', function(req, res, next){
