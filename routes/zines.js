@@ -67,7 +67,9 @@ router.post('/articles/:id/update', function(req, res, next){
       }
     }
   } else {
-      res.render('zines/articles/' + req.params.id + "/edit", {error: "Please correct the errors below"})
+    zineCollection.findOne({_id: req.params.id}, function(err, thisZine){
+      res.render('zines/edit', {thisZine: thisZine, error: "Please correct the errors below"})
+    });
   }
 });
 
