@@ -8,7 +8,12 @@ block content
     div.articleExcerpt
       div.articleExcerptHeader(style='background-image: url(#{zine.backgroundUrl})')
         if zine.darkBackground 
-          p.darkBackground #{zine.title}
+          div.white
+            div.titleText
+              a(href="/zines/articles/" + zine._id) #{zine.title}
+        else
+          div.titleText
+            a(href="/zines/articles/" + zine._id) #{zine.title}
       div.articleExcerptBody
         p= zine.excerpt
   div.footer

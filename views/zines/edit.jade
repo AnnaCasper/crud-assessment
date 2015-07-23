@@ -6,9 +6,9 @@ block content
       h1 The 
         a(href="/zines") Zine
   div.form
-    h2 New Article
+    h2 Edit Article
     hr
-    form(action="/zines/articles" method="post")
+    form(action="/zines/articles/" + thisZine._id + "/update" method="post")
       div.labels
         div.formTitle
           label(for="title") Title
@@ -21,14 +21,17 @@ block content
           label(for="body") Body 
       div.boxes
         div.formTitle
-          input(type="text" id="title" name="title")
+          input(type="text" id="title" name="title" value=thisZine.title)
         div.formUrl
-          input(type="url" id="backgroundUrl" name="backgroundUrl")
+          input(type="url" id="backgroundUrl" name="backgroundUrl" value=thisZine.backgroundUrl)
         div.formCheckbox
           input(type="checkbox" id="darkBackground" name="darkBackground")
           label(for="darkBackground") Background image has dark colors
         div.formExcerpt
-          textarea(name="excerpt" id="expcert")
+          textarea(name="excerpt" id="excerpt") #{thisZine.excerpt}
         div.formBody
-          textarea(name="body" id="body")
-        input(type="submit" value="Add Article")
+          textarea(name="body" id="body") #{thisZine.body}
+        input(type="submit" value="Edit Article")
+        p
+        span.delete
+          a(href="/zines/delete/" + thisZine._id) Delete

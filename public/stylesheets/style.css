@@ -7,7 +7,8 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color:inherit;
+  text-decoration: none;
 }
 
 .form {
@@ -19,17 +20,43 @@ a {
   padding-top: 10px;
   padding-bottom: 10px;
   width: 97%;
-  height: 600px;
+  height: 1000px;
+  line-height:500%;
 }
 
-input {
-  width: 60%;
-  margin: 0 auto;
+.labels {
+  float: left;
+}
+
+.boxes {
+  width: 80%;
+  float:left;
+  margin-left: 50px;
+}
+
+#title, #backgroundUrl {
+  width: 80%;
 }
 
 textarea {
-  width: 60%;
-  margin: 0 auto;
+  width: 80%;
+  height: 200px;
+}
+
+.formTitle, .formUrl {
+  height: 70px;
+}
+
+.formCheckbox {
+  height: 70px;
+}
+
+.formExcerpt, .formBody {
+  height: 220px;
+}
+
+.white {
+  color: white;
 }
 
 .header {
@@ -53,25 +80,64 @@ textarea {
 }
 
 .articleExcerptHeader {
-  width: 98.5%;
-  height: 50px;
+  width: 97%;
+  height: 75px;
   background-image: url('../images/swirl_pattern.png');
-  padding-top: 10px;
   padding-left: 20px;
-  padding-left: 20px;
-  padding-bottom: 10px;
+  padding-right: 20px;
+  font-size: 24px;
 }
 
 .articleExcerptBody {
   width: 98.5%;
-  height: 150px;
+  height: 100px;
   padding-top: 10px;
   padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.articleBody {
+  width: 100%;
+  background-color: white;
+  margin-top: 30px;
+}
+
+.articleBodyHeader {
+  width: 97%;
+  height: 75px;
+  background-image: url('../images/swirl_pattern.png');
   padding-left: 20px;
+  padding-right: 20px;
+  font-size: 24px;
 }
-.darkBackground{
-  color: white;
+
+.edit {
+  float: right;
 }
+
+.titleText {
+  float:left;
+}
+
+.articleBodyBody {
+  width: 98.5%;
+  height: 400px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.delete {
+  border: 1px solid black;
+  width: 150px;
+  height: 60px;
+  text-align: center;
+  padding: 5px;
+  background-color: red;
+}
+
 .footer {
   padding: 30px;
   text-align: right;
