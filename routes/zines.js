@@ -57,7 +57,7 @@ router.post('/articles/:id/update', function(req, res, next){
 //POST remove
 router.get('/delete/:id', function(req, res, next){
   zineCollection.remove({_id: req.params.id});
-  res.redirect('/zines/articles')
+  res.redirect('/zines')
 })
 
 module.exports = router;
