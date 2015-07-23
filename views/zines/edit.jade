@@ -27,8 +27,12 @@ block content
         div.formUrl
           input(type="url" id="backgroundUrl" name="backgroundUrl" value=thisZine.backgroundUrl)
         div.formCheckbox
-          input(type="checkbox" id="darkBackground" name="darkBackground")
-          label(for="darkBackground") Background image has dark colors
+          if thisZine.darkBackground
+            input(type="checkbox" id="darkBackground" name="darkBackground" checked)
+            label(for="darkBackground") Background image has dark colors
+          else
+            input(type="checkbox" id="darkBackground" name="darkBackground")
+            label(for="darkBackground") Background image has dark colors
         div.formExcerpt
           textarea(name="excerpt" id="excerpt") #{thisZine.excerpt}
         div.formBody
