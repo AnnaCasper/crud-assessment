@@ -6,13 +6,19 @@ block content
       h1 The Zine
   for zine in allZines
     div.articleExcerpt
-      div.articleExcerptHeader(style='background-image: url(#{zine.backgroundUrl})')
-        if zine.darkBackground 
-          div.white
+      if zine.backgroundUrl
+        div.articleExcerptHeader(style='background-image: url(#{zine.backgroundUrl})')
+          if zine.darkBackground 
+            div.white
+              div.titleText
+                p
+                  a(href="/zines/articles/" + zine._id) #{zine.title}
+          else 
             div.titleText
               p
                 a(href="/zines/articles/" + zine._id) #{zine.title}
-        else
+      else
+        div.articleExcerptHeader
           div.titleText
             p
               a(href="/zines/articles/" + zine._id) #{zine.title}

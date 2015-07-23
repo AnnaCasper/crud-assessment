@@ -6,8 +6,7 @@ var zineCollection = db.get('zine');
 
 //GET zines home page
 router.get('/', function(req, res, next){
-  zineCollection.find({}, function(err, zines){
-    var allZines = zines.reverse();
+  zineCollection.find({}, {$orderby: {date: -1}}, function(err, allZines){
     res.render('zines/index', {allZines: allZines});
   });
 });
@@ -23,6 +22,7 @@ router.post('/articles', function(req, res, next){
     if(req.body.excerpt){
       if(req.body.body){
         zineCollection.insert({
+          date: Date (),
           title: req.body.title,
           backgroundUrl: req.body.backgroundUrl,
           darkBackground: req.body.darkBackground,
