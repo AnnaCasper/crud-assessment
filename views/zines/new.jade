@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  h1 The Zine
+  div.body
+    h2 New Article
+    hr
+    form(method="post" action="/new")
+      label(for="title") Title
+      input(type="text" id="title" name="title")
+      p
+      label(for="backgroundUrl") Background URL  
+      input(type="text" id="backgroundUrl" name="backgroundUrl")
+      p
+      input(type="checkbox" id="darkBackground" name="darkBackground")
+      label(for="darkBackground") Background image has dark colors
+      p
+      label(for="excerpt") Excerpt 
+      textarea(name="excerpt" id="expcert")
+      p
+      label(for="body") Body 
+      textarea(name="body" id="body")
+      p
+      input(type="submit" value="Add Article")
