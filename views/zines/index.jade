@@ -14,7 +14,8 @@ block content
                 a(href="/zines/articles/" + zine._id) #{zine.title}
         else
           div.titleText
-            a(href="/zines/articles/" + zine._id) #{zine.title}
+            p
+              a(href="/zines/articles/" + zine._id) #{zine.title}
       div.articleExcerptBody
         p= zine.excerpt
   div.footer

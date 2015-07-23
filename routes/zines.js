@@ -6,7 +6,8 @@ var zineCollection = db.get('zine');
 
 //GET zines home page
 router.get('/', function(req, res, next){
-  zineCollection.find({}, function(err, allZines){
+  zineCollection.find({}, function(err, zines){
+    var allZines = zines.reverse();
     res.render('zines/index', {allZines: allZines});
   });
 });
