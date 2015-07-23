@@ -6,7 +6,7 @@ var zineCollection = db.get('zine');
 
 //GET zines home page
 router.get('/', function(req, res, next){
-  zineCollection.find({}, {$sort: {date: -1}}, function(err, allZines){
+  zineCollection.find({}, function(err, allZines){
     res.render('zines/index', {allZines: allZines});
   });
 });
@@ -28,8 +28,7 @@ router.post('/articles', function(req, res, next){
           excerpt: req.body.excerpt,
           body: req.body.body
         })
-      }
-      res.redirect('/zines');
+        res.redirect('/zines');
       }
     }
   } else {
