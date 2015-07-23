@@ -18,14 +18,21 @@ router.get('/articles/new', function(req, res, next){
 
 //POST new article
 router.post('/articles', function(req, res, next){
-  zineCollection.insert({
-    title: req.body.title,
-    backgroundUrl: req.body.backgroundUrl,
-    darkBackground: req.body.darkBackground,
-    excerpt: req.body.excerpt,
-    body: req.body.body
-  });
-  res.redirect('/zines')
+  if(req.body.title){
+    if(req.body.excerpt){
+      if(req.body.body){
+        zineCollection.insert({
+          title: req.body.title,
+          backgroundUrl: req.body.backgroundUrl,
+          darkBackground: req.body.darkBackground,
+          excerpt: req.body.excerpt,
+          body: req.body.body
+        });
+      }
+    }
+  } else {
+    res.render('zines/new', {error: "Please correct the errors below"})
+  }
 });
 
 //GET show page
@@ -58,6 +65,6 @@ router.post('/articles/:id/update', function(req, res, next){
 router.get('/delete/:id', function(req, res, next){
   zineCollection.remove({_id: req.params.id});
   res.redirect('/zines')
-})
+});
 
 module.exports = router;

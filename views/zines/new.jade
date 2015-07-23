@@ -9,6 +9,8 @@ block content
     h2 New Article
     hr
     form(action="/zines/articles" method="post")
+      if error 
+        p.error #{error}
       div.labels
         div.formTitle
           label(for="title") Title
