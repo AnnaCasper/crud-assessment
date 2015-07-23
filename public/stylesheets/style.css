@@ -31,10 +31,17 @@ textarea {
   width: 60%;
   margin: 0 auto;
 }
+
 .header {
   margin: 0 auto;
   background-image: url('../images/header.jpeg');
-  text-align: right;
   width: 100%;
   height: 200px;
+}
+
+.headerText {
+  text-align: right;
+  padding-top: 70px;
+  padding-right: 30px;
+  font-size: 20px;
 }

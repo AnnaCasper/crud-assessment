@@ -2,11 +2,12 @@ extends ../layout
 
 block content
   div.header
-    h1 The Zine
+    div.headerText
+      h1 The Zine
   div.form
     h2 New Article
     hr
-    form(method="post" action="/new")
+    form(action="/zines/articles" method="post")
       label(for="title") Title
       input(type="text" id="title" name="title")
       p

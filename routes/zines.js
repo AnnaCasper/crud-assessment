@@ -14,4 +14,17 @@ router.get('/articles', function(req, res, next){
   res.render('zines/new')
 });
 
+//POST new article
+router.post('/articles', function(req, res, next){
+  zineCollection.insert({
+    title: req.body.title,
+    backgroundUrl: req.body.backgroundUrl,
+    darkBackground: req.body.darkBackground,
+    excerpt: req.body.excerpt,
+    body: req.body.body
+  });
+  res.redirect('/zines')
+});
+
+
 module.exports = router;
