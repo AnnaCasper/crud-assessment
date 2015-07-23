@@ -6,20 +6,27 @@ block content
       h1 The 
         a(href="/zines") Zine
   div.articleBody
-    div.articleBodyHeader(style='background-image: url(#{thisZine.backgroundUrl})')
-      if thisZine.darkBackground 
-        div.white
+    if thisZine.backgroundUrl
+      div.articleBodyHeader(style='background-image: url(#{thisZine.backgroundUrl})')
+        if thisZine.darkBackground 
+          div.white
+            div.titleText
+              p #{thisZine.title}
+              div.edit 
+              p
+                a(href="/zines/articles/" + thisZine._id + "/edit") Edit
+        else 
           div.titleText
             p #{thisZine.title}
           div.edit 
             p
               a(href="/zines/articles/" + thisZine._id + "/edit") Edit
-      else 
+    else 
+      div.articleBodyHeader
         div.titleText
           p #{thisZine.title}
         div.edit 
-          p
+          p 
             a(href="/zines/articles/" + thisZine._id + "/edit") Edit
-      
     div.articleBodyBody
       p= thisZine.body 
