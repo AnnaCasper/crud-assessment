@@ -28,6 +28,7 @@ router.post('/articles', function(req, res, next){
           excerpt: req.body.excerpt,
           body: req.body.body
         });
+      res.redirect('/zines');
       }
     }
   } else {
@@ -51,14 +52,22 @@ router.get('/articles/:id/edit', function(req, res, next){
 
 //POST updates
 router.post('/articles/:id/update', function(req, res, next){
-  zineCollection.update({_id: req.params.id}, {$set: {
-    title: req.body.title,
-    backgroundUrl: req.body.backgroundUrl,
-    darkBackground: req.body.darkBackground,
-    excerpt: req.body.excerpt,
-    body: req.body.body
-  }});
-  res.redirect('/zines/articles/' + req.params.id)
+  if(req.body.title){
+    if(req.body.excerpt){
+      if(req.body.body){
+        zineCollection.update({_id: req.params.id}, {$set: {
+          title: req.body.title,
+          backgroundUrl: req.body.backgroundUrl,
+          darkBackground: req.body.darkBackground,
+          excerpt: req.body.excerpt,
+          body: req.body.body
+        }});
+        res.redirect('/zines/articles/' + req.params.id)
+      }
+    }
+  } else {
+      res.render('zines/articles/' + req.params.id + "/edit", {error: "Please correct the errors below"})
+  }
 });
 
 //POST remove
