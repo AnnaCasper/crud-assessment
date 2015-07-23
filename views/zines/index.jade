@@ -4,4 +4,13 @@ block content
   div.header
     div.headerText
       h1 The Zine
+  for zine in allZines
+    div.articleExcerpt
+      div.articleExcerptHeader(style='background-image: url(#{zine.backgroundUrl})')
+        if zine.darkBackground 
+          p.darkBackground #{zine.title}
+      div.articleExcerptBody
+        p= zine.excerpt
+  div.footer
+    a(href="/zines/articles/new" id="footer") Add New Article
   
