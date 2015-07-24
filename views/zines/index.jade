@@ -23,7 +23,7 @@ block content
             p
               a(href="/zines/articles/" + zine._id) #{zine.title}
       div.articleExcerptBody
-        p= zine.excerpt
+        p(style = 'white-space: pre-wrap') #{zine.excerpt}
   div.footer
     a(href="/zines/articles/new" id="footer") Add New Article
   

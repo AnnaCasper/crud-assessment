@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
 var db = require('monk')(process.env.MONGOLAB_URI);
 var zineCollection = db.get('zine');
-
+var functions = require('../lib/javascripts/scripts.js')
 //GET zines home page
 router.get('/', function(req, res, next){
   zineCollection.find({ $query: {}, $orderby: { _id : -1 } } , function(err, allZines){
