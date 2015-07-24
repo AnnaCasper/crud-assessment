@@ -17,21 +17,25 @@ router.get('/articles/new', function(req, res, next){
 
 //POST new article
 router.post('/articles', function(req, res, next){
-  if(req.body.title){
-    if(req.body.excerpt){
-      if(req.body.body){
-        zineCollection.insert({
-          title: req.body.title,
-          backgroundUrl: req.body.backgroundUrl,
-          darkBackground: req.body.darkBackground,
-          excerpt: req.body.excerpt,
-          body: req.body.body
-        })
-        res.redirect('/zines');
-      }
-    }
+  var errors = functions.validateForm(req.body.title, req.body.excerpt, req.body.body);
+  if(errors.length === 0){
+    zineCollection.insert({
+      title: req.body.title,
+      backgroundUrl: req.body.backgroundUrl,
+      darkBackground: req.body.darkBackground,
+      excerpt: req.body.excerpt,
+      body: req.body.body
+    });
+    res.redirect('/zines');
   } else {
-    res.render('zines/new', {error: "Please correct the errors below"})
+    res.render('zines/new', {
+      errorAlert: 'Please correct the errors below:',
+      errors: errors,
+      title: req.body.title,
+      backgroundUrl: req.body.backgroundUrl,
+      darkBackground: req.body.darkBackground,
+      excerpt: req.body.excerpt,
+      body: req.body.body});
   }
 });
 
@@ -51,20 +55,10 @@ router.get('/articles/:id/edit', function(req, res, next){
 
 //POST updates
 router.post('/articles/:id/update', function(req, res, next){
-  if(req.body.title){
-    if(req.body.excerpt){
-      if(req.body.body){
-        zineCollection.update({_id: req.params.id}, {$set: {
-          title: req.body.title,
-          backgroundUrl: req.body.backgroundUrl,
-          darkBackground: req.body.darkBackground,
-          excerpt: req.body.excerpt,
-          body: req.body.body
-        }});
-        res.redirect('/zines/articles/' + req.params.id)
-      }
-    }
-  } else {
+  var errors = functions.validateForm(req.body.title, req.body.excerpt, req.body.body);
+    if(errors.length === 0){
+      res.redirect('/zines/articles/' + req.params.id);
+    } else {
       zineCollection.update({_id: req.params.id}, {$set: {
         title: req.body.title,
         backgroundUrl: req.body.backgroundUrl,

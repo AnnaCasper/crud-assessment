@@ -9,8 +9,10 @@ block content
     h2 New Article
     hr
     form(action="/zines/articles" method="post")
-      if error 
-        p.error #{error}
+      if errors
+        p.error #{errorAlert}
+        for error in errors 
+          p.error #{error}
       div.labels
         div.formTitle
           label(for="title") Title
@@ -23,14 +25,14 @@ block content
           label(for="body") Body 
       div.boxes
         div.formTitle
-          input(type="text" id="title" name="title")
+          input(type="text" id="title" name="title" value=title)
         div.formUrl
-          input(type="url" id="backgroundUrl" name="backgroundUrl")
+          input(type="url" id="backgroundUrl" name="backgroundUrl" value=backgroundUrl)
         div.formCheckbox
           input(type="checkbox" id="darkBackground" name="darkBackground")
           label(for="darkBackground") Background image has dark colors
         div.formExcerpt
-          textarea(name="excerpt" id="expcert")
+          textarea(name="excerpt" id="expcert") #{excerpt}
         div.formBody
-          textarea(name="body" id="body")
+          textarea(name="body" id="body") #{body}
         input(type="submit" value="Add Article")
