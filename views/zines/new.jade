@@ -29,7 +29,10 @@ block content
         div.formUrl
           input(type="url" id="backgroundUrl" name="backgroundUrl" value=backgroundUrl)
         div.formCheckbox
-          input(type="checkbox" id="darkBackground" name="darkBackground")
+          if darkBackground
+            input(type="checkbox" id="darkBackground" name="darkBackground" checked)
+          else
+            input(type="checkbox" id="darkBackground" name="darkBackground")
           label(for="darkBackground") Background image has dark colors
         div.formExcerpt
           textarea(name="excerpt" id="expcert") #{excerpt}
